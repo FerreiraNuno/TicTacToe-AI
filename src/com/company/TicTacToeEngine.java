@@ -2,11 +2,13 @@ package com.company;
 
 import processing.core.PApplet;
 
-import java.util.Arrays;
-
 public class TicTacToeEngine extends PApplet {
     private int[][] board;
     public int currentPlayer = 0;
+
+    TicTacToeEngine(){
+        newGame();
+    }
 
     public void newGame() {
         board = new int[3][3]; // default values are -1
@@ -21,10 +23,6 @@ public class TicTacToeEngine extends PApplet {
         this.board = board;
         this.currentPlayer = currentPlayer;
         return this;
-    }
-
-    TicTacToeEngine(){
-        newGame();
     }
 
     int[][] getBoard() {
@@ -120,12 +118,13 @@ public class TicTacToeEngine extends PApplet {
         return true;
     }
 
+
+    // This method allows the AI to make identical copies of the current board to test all possible moves
     public TicTacToeEngine makeClone() {
         TicTacToeEngine cloneObject = new TicTacToeEngine();
         cloneObject.newGame(this.getBoard(), this.getCurrentPlayer());
         return cloneObject;
     }
-
 
     @Override
     public String toString() {

@@ -2,9 +2,6 @@ package com.company;
 
 import processing.core.PApplet;
 
-
-
-
 public class TicTacToeProcessing extends PApplet {
     public static void main(String[] args) {
         String[] appArgs = {"TicTacToeProcessing"};
@@ -24,7 +21,7 @@ public class TicTacToeProcessing extends PApplet {
     public void setup() {
         gameEngine = new TicTacToeEngine();
         toeAI = new ToeAI(gameEngine, gameEngine.getCurrentPlayer() + 1);
-        toeAI.makeCalculatedEvaluation(gameEngine);
+        toeAI.makeCalculatedMove(gameEngine);
         drawBackground();
     }
 
@@ -33,8 +30,8 @@ public class TicTacToeProcessing extends PApplet {
         int y = mouseY / blockSize;
         if (waitForReset) {
             waitForReset = false;
+            toeAI.makeCalculatedMove(gameEngine);
             drawBackground();
-            toeAI.makeCalculatedEvaluation(gameEngine);
         } else if (!makeAIMove) {
             gameEngine.placeSymbol(y, x);
             drawBackground();
@@ -43,7 +40,6 @@ public class TicTacToeProcessing extends PApplet {
             checkPlay();
         }
     }
-
 
     public void checkPlay() {
         // returns false if game is over
@@ -68,7 +64,6 @@ public class TicTacToeProcessing extends PApplet {
             text("no one won", 1.5F * blockSize, 1.7F * blockSize);
         }
     }
-
 
     public void drawBackground() {
         background(color(255, 255, 255));
@@ -110,9 +105,9 @@ public class TicTacToeProcessing extends PApplet {
 
     public void draw() {
         if (makeAIMove && millis() >= timerTrigger) {
-            toeAI.makeCalculatedEvaluation(gameEngine);
+            toeAI.makeCalculatedMove(gameEngine);
             makeAIMove = false;
-            drawBackground();
+            checkPlay();
         }
 
     }

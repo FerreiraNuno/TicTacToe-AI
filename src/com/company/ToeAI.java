@@ -2,7 +2,6 @@ package com.company;
 
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ToeAI {
     TicTacToeEngine game;
@@ -15,7 +14,7 @@ public class ToeAI {
     }
 
 
-    public int makeCalculatedEvaluation(TicTacToeEngine evalGame) {
+    public int makeCalculatedMove(TicTacToeEngine evalGame) {
         if (evalGame.isGameOver()) {
             return -1;
         }
@@ -30,7 +29,7 @@ public class ToeAI {
         for (Move move : moves) {
             TicTacToeEngine testGame = evalGame.makeClone();
             testGame.placeSymbol(move.row, move.collumn);
-            int evaluation = -makeCalculatedEvaluation(testGame.makeClone());
+            int evaluation = -makeCalculatedMove(testGame.makeClone());
             if (evaluation >= bestEvaluation) {
                 bestEvaluation = evaluation;
                 bestMove = move;
