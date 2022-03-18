@@ -18,15 +18,15 @@ IntelliJ´s Project Settings.
 
 The game always starts with the AI's turn (to make it a bit more challenging ;)).
 
-![alt-text](img/1.PNG)
+<img src="./img/1.PNG" alt="gameplay" width="400"/>
 
 To make your move just click on a free spot. The AI responds after a few milliseconds.
 If your first move was not in the center, then the game is already lost.
 
-![alt-text](img/2.PNG)
+<img src="./img/2.PNG" alt="gameplay" width="400"/>
 
 The AI will test out every possible move before playing, always striving for a win or a draw.
 
-![alt-text](img/3.PNG)
+<img src="./img/3.PNG" alt="gameplay" width="400"/>
 
 As the AI has the first turn playing and never plays incorrectly, this game is unwinnable.
